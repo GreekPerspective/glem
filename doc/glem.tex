@@ -1,0 +1,360 @@
+\documentclass[a4paper]{article}
+%
+\usepackage{fontspec} %Font package
+\usepackage{xunicode}
+%
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage[variant=ancient]{greek}
+%\newfontfamily\greekfont[Script=Greek]{Galatia SIL}
+\newfontfamily\greekfont[Script=Greek]{Linux Libertine O}
+\setmainfont{Charis SIL}
+\setmonofont[Scale=0.8]{Menlo}
+%
+\usepackage{xcolor}
+\usepackage{titlesec}
+\definecolor{MSBlue}{rgb}{.204,.353,.541}
+\definecolor{MSLightBlue}{rgb}{.31,.506,.741}
+%
+% Define a new fontfamily for the subsubsection font
+% Don't use \fontspec directly to change the font
+% Set formats for each heading level
+\titleformat*{\section}{\Large\bfseries\sffamily\color{MSBlue}}
+\titleformat*{\subsection}{\large\bfseries\sffamily\color{MSBlue}}
+\newfontfamily\subsubsectionfont[Color=MSLightBlue]{Hoefler Text}
+\titleformat*{\subsubsection}{\bfseries\itshape\subsubsectionfont}
+%
+\usepackage{url}
+\usepackage[verbose]{geometry}
+\geometry{inner=3cm,outer=3cm,top=3cm,bottom=3cm}
+\usepackage[style=british]{csquotes}
+%
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.16}%onehalf is 1.25/1.213/1.241 for 10/11/12 pt
+%
+%\def\glem{\textgreek{Γλεμ}}
+\def\glem{\textsc{glem}}
+\def\conll{\textsc{conll}}
+\def\proiel{\textsc{proiel}}
+\def\frog{\textsc{frog}}
+% ----
+\newenvironment{varlist}[1]{%
+\begin{list}{}{%
+    \settowidth{\labelwidth}{\sf #1 }     %longest label length
+%    \addtolength{\labelsep}{3ex}          %extra space between lbl/txt
+    \setlength{\leftmargin}{\labelwidth}  %determine leftmargin
+    \addtolength{\leftmargin}{\labelsep}  %determine leftmargin
+    \setlength{\parsep}{0.5ex plus 0.2ex minus 0.2ex}
+    \setlength{\itemsep}{0.3ex}
+    \renewcommand{\makelabel}[1]{\sf ##1\hfill}}}%
+{\end{list}}
+%
+\usepackage{tcolorbox}
+\newtcolorbox[auto counter,number within=section]{pabox}[2][]{%
+colframe=MSBlue,arc=4pt,outer arc=4pt,colback=black!5,top=4pt,bottom=4pt,boxsep=3mm,fonttitle=\bfseries, title=\thetcbcounter: #2,#1}
+%
+\renewcommand\arraystretch{1.2}% spacing in tables
+%
+\newlength{\pdfwidth}
+%%\setlength{\pdfwidth}{1.0\textwidth}
+\setlength{\pdfwidth}{0.45\textwidth}
+\newlength{\halfpage}
+\setlength{\halfpage}{0.5\textwidth}
+\newlength{\halfpagefig}
+\setlength{\halfpagefig}{0.5\textwidth}
+\addtolength{\halfpagefig}{-0.25cm}
+\newlength{\thirdpage}
+\setlength{\thirdpage}{0.33\textwidth}
+\newlength{\halfline}
+\setlength{\halfline}{0.5\linewidth}
+%{0.5\linewidth}
+%
+%\setlength{\parindent}{0pt}
+\usepackage{parskip}
+%
+\renewcommand{\topfraction}{1.0}
+\renewcommand{\bottomfraction}{1.0}
+\renewcommand{\textfraction}{0.0}
+% how hard latex should try to place floats together
+\renewcommand{\floatpagefraction}{0.6}
+%
+%
+%http://tex.stackexchange.com/questions/24766/long-underscore-in-latex
+\newcommand{\uline}[1]{\rule[0pt]{#1}{0.4pt}}
+%
+%%http://tex.stackexchange.com/questions/299/how-to-get-long-texttt-sections-to-break
+\newcommand*\justify{%
+  \fontdimen2\font=0.4em% interword space
+  \fontdimen3\font=0.2em% interword stretch
+  \fontdimen4\font=0.1em% interword shrink
+  \fontdimen7\font=0.1em% extra space
+  \hyphenchar\font=`\-% allowing hyphenation
+}
+%
+\newcommand{\fit}[1]{\noindent\resizebox{\linewidth}{!}{#1}}
+\newcommand{\fcmp}[1]{\noindent\resizebox{\linewidth}{!}{\cmp{#1}}}
+\newcommand{\scmp}[1]{\scalebox{0.96}{\cmp{#1}}}
+
+% ========================================================================== %
+
+\begin{document}
+
+\selectlanguage{english}
+
+\section*{Intro}
+
+This is \glem{}, a lemmatiser.
+
+%% copied from article
+
+%1. what did we do
+We present the lemmatizer that we developed for ancient Greek. Not only does it
+disambiguate between multiple lemmas (with the same or different POS tags), but
+it also creates new lemmas for unknown words.
+
+%2. why did we do it?
+Currently available lemmatizers for ancient Greek such as the one developed in
+the CLTK \cite{johnson2014} cannot handle such cases.
+
+%3. how did we do it
+As the basis for the lemmatizer we used an existing memory-based learning tool,
+Frog \cite{Frog2016}, that was originally developed for Dutch. We converted Frog
+to work for ancient Greek. As the results of Frog on ancient Greek were rather
+modest, we decided to create a smarter lemmatizer named \glem{} that combines a
+lexicon look up with the memory-based tool Frog.
+
+%4. what did we find
+%We evaluate and compare the performance of \glem{} against the CLTK lemmatizer and
+%the Frog lemmatizer and observe that \glem{} achieves the highest accuracy of 91\%
+%on an unseen test corpus sample.
+
+%5. what do we think that it means?
+\glem{}'s look up component overcomes the difficulty of a relative small training
+set in combination with a morphologically rich
+language, %and leads to an improved precision
+while the memory-based learning component enables \glem{} to handle unknown
+words. % recall
+
+\tcbset{width=\linewidth,arc=0pt,outer
+  arc=0pt,colback=black!10,colframe=black!0,boxsep=1pt,left=0pt,right=0pt,top=4pt,bottom=4pt}
+
+\section*{Usage}
+
+\subsection*{Basic Usage}
+
+Lemmatising a single file is done as follows.
+
+\begin{tcolorbox}
+\texttt{python3 glem.py -f TEST\_FILE}
+\end{tcolorbox}
+
+The input file is expected to contain plain greek text. This produces one output
+file (and lots of output to the screen). The output file is named as follows:
+\texttt{TEST\_FILE.lastrun.wlt.txt}
+
+The \texttt{lastrun} marker is appended to the filename automatically, and can be changed with
+the \texttt{-s} option. The following command will produce an output file
+named \texttt{TEST\_FILE.run1.wlt.txt}.
+
+\begin{tcolorbox}
+\texttt{python3 glem.py -f TEST\_FILE -s run1}
+\end{tcolorbox}
+
+For each word in the input text, the output contains one line containing a
+word-lemma-tag triplet. An example is shown below.
+
+\begin{tcolorbox}
+\textgreek{γενόμενα}\hspace{0.5cm}\textgreek{γίγνομαι}\hspace{0.5cm}\texttt{V--papmna-}
+\end{tcolorbox}
+
+If the \texttt{-S} option is added, two extra fields are added to the
+output. The first one contains the entry as it is contained in the internal
+lexicon in \glem{}, and the second one contains a textual representation of the
+strategy used by the lemmatizer to reach the answer. The output file is named as
+follows: \texttt{TEST\_FILE.lastrun.stats.txt}. An example is shown below.
+
+\begin{tcolorbox}
+\texttt{python3 glem.py -f TEST\_FILE -s run1 -S}
+\end{tcolorbox}
+
+And the output looks like this.
+
+\begin{tcolorbox}
+\selectlanguage{greek}ἱστορίης\hspace{0.5cm}ἱστορία
+\selectlanguage{english}\hspace{0.5cm}\texttt{N--s---fg-}\hspace{0.5cm}
+/\textgreek{ἱστορίης}/\textgreek{ἱστορία}/\texttt{N--s---fg-}/\texttt{2}/\texttt{greek\_Haudag}/\\
+\strut\hfill\texttt{multi lemmas, no tag, highest frequency}
+\end{tcolorbox}
+
+\subsection*{Looking Up}
+
+The following example shows how to use the \texttt{-w} option to look up a word
+from the lexicons loaded by \glem{}.
+
+\begin{tcolorbox}
+\texttt{python3 glem.py -w τῶν}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\begin{verbatim}
+LOOKUP WORD τῶν
+   τῶν, 14
+     τῶν, ὁ, S--p---mg-,  1163 greek_Haudag
+     τῶν, ὁ, S--p---qg-,   660 greek_Haudag
+     τῶν, ὁ, S--p---ng-,   211 greek_Haudag
+     τῶν, ὁ, S--p---fg-,   153 greek_Haudag
+\end{verbatim}
+\end{tcolorbox}
+
+The next example shows how to use the \texttt{-l} option to look up a lemma from the
+loaded lexicons.
+
+\begin{tcolorbox}
+\texttt{python3 glem.py -l Δάμαρις}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\begin{verbatim}
+LOOKUP LEMMA Δάμαρις
+Δάμαρις
+   Δάμαρις, Δάμαρις, N--s---fn-,     1 greek_Haudag
+\end{verbatim}
+\end{tcolorbox}
+
+\section*{Frog}
+
+\glem{} assumes \frog{} is available. It expects to be able to initialise
+\frog{} with a template named \texttt{frog.ancientgreek.template}.
+
+\par If \frog{} is unavailable, run \glem{} with the \texttt{-F} option to
+disable it. 
+
+
+\section*{Lexicon Files}
+
+\glem{} reads three different lexicon files.
+
+\texttt{greek\_Haudag.pcases.lemma.lex.rewrite\_new}. This file contains
+word-lemma-tag-frequency information, one entry per line. The following example
+shows two entries.
+
+\begin{tcolorbox}
+\selectlanguage{greek}αὐτός~~αὐτός~~\selectlanguage{english}\texttt{Pd-s---mn- 25}\\
+  \selectlanguage{greek}αὐτός~~αὐτός~~\selectlanguage{english}\texttt{Pp3s---mn- 11}
+\end{tcolorbox}
+
+The second file is called \texttt{perseus-wlt.txt}. This file contains
+word-lemma-tag information without the frequency information. The following
+example shows two entries.
+
+\begin{tcolorbox}
+\selectlanguage{greek}ἀναπλέουσι~~ἀναπλέω~~\selectlanguage{english}\texttt{V-3ppia---}\\
+\selectlanguage{greek}κατεπάγων~~κατεπάγω~~\selectlanguage{english}\texttt{V--sppamn-}
+\end{tcolorbox}
+
+The third file is an extra file containing punctuation. It is called
+\texttt{extra-wlt.txt} and also contains word-lemma-tag entries. The following
+example shows two entries from this file.
+
+\begin{tcolorbox}
+\texttt{(~~(~~punct}\\
+\texttt{)~~)~~punct}
+\end{tcolorbox}
+
+\section*{All Options}
+
+\glem{} accepts the following command line options.
+
+\begin{varlist}{wwwwwwww}
+
+\subsection*{Input and output}
+
+\item[\texttt{-f} filename] The file (or files, wildcards are allowed) to
+  be lemmatised.
+
+\item[\texttt{-s} suffix] The output files will be given this suffix.
+
+\item[\texttt{-S}] Outputs extra information consisting of the full entry from
+  \glem{}'s dictionary plus a textual representation of the strategy used to
+  come to an answer.
+
+\item[\texttt{-W}] Assumes the test file contains word-lemma-tag data
+  separated by whitespace. The first word of each line is lemmatised, and the
+  specified lemma and tag are assumed to be correct and compared to \glem{}'s output.
+
+\item[\texttt{-F}] The test file will be processed with \glem{}
+  only, without using \frog{} for the unknown words. This means that unknown words remain unhandled.
+
+\subsection*{Look-up}
+
+\item[\texttt{-l} lemma] Looks up the specified lemma in
+  the dictionary.
+
+\item[\texttt{-w} word] Looks up the specified word in the dictionary.
+
+%\vspace{0.5cm}
+\subsection*{Lexicons}
+
+\item[\texttt{-L} filename] Loads the specified lexicon file. 
+
+\item[\texttt{-M} filename] Loads another "merged" file.
+
+\item[\texttt{-E} filename] Loads another "extra" file. The
+  default extra file contains punctuation.
+
+\subsection*{Miscellaneous}
+
+\item[\texttt{-v}] Extra verbose output to the screen.
+
+\item[\texttt{-D}] Prints extra debug information to the screen.
+
+\item[\texttt{-R}] Remove the token \texttt{ROOT} from the
+  lines in the text file.
+
+\end{varlist}
+
+\section*{Strategy}
+
+\glem{} uses the following strategy when lemmatizing a text.
+
+\begin{pabox}{Lemmatiser Flowchart}
+\begin{verbatim}
+Check if word in dictionary.
+
+If it is:
+  1) If it has only one tag/lemma entry, return it.
+     ("one lemma, same pos tag" / "one lemma, different pos tag")
+  2) More than one tag/lemma entry: go through the tag/lemmas, and:
+     a) if a lemma with a similar pos tag is found, return it.
+        ("multiple lemmas, same pos tag, highest frequency" or
+         "multi lemmas, same pos tag, other frequency")
+     b) otherwise, return the most frequent tag/lemma.
+        ("multi lemmas, different pos tag, highest frequency")
+ 
+If it is not in the dictionary:
+  1) Take Frog entry, and return it.
+     ("Frog" / "Frog list")
+  2) If this fails:
+  return ("unknown")
+\end{verbatim}
+\end{pabox}
+
+\begin{comment}
+\begin{config}{e2}
+    "MLDTHF" : "multi lemmas, no pos tag match, highest frequency", #DT=different tag
+    "MLNTHF" : "multi lemmas, no tag, highest frequency",
+    "MLSTHF" : "multi lemmas, pos tag match, and highest frequency",
+    "MLNTHF" : "multi lemmas, no tag, highest frequency",
+    "MLSTOF" : "multi lemmas, pos tag match, but other frequency",
+    "MLNTOF" : "multi lemmas, no tag, other frequency",
+    "OLDT"   : "one lemma, but different pos tag",
+    "OLST"   : "one lemma, same pos tag",
+    "OLNT"   : "one lemma, no tag",
+    "FROG"   : "Frog lemma",
+    "UNKNOWN": "unknown"
+\end{config}
+\end{comment}
+
+\end{document}
+
