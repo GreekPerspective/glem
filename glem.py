@@ -144,13 +144,15 @@ stats       = False
 callstr = " ".join(sys.argv)
 
 try:
-    opts, args = getopt.getopt(sys.argv[1:], "f:l:L:s:vw:DE:FM:RWS", [])
+    opts, args = getopt.getopt(sys.argv[1:], "c:f:l:L:s:vw:DE:FM:RWS", [])
 except getopt.GetoptError as err:
     print(str(err))
     sys.exit(1)
 for o, a in opts:
     if o in ("-f"):
         filenames = sorted(glob.glob(a))
+    elif o in ("-c"): #alternative frog config
+         frog_cfg = a
     elif o in ("-l"): #lookup a specific lemma, print to screen
          lookup_l = a
     elif o in ("-L"): #choose another lexicon file
