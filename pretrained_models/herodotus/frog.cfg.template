@@ -1,0 +1,12 @@
+[[global]]
+configDir=
+
+[[mblem]]
+keep_case=true
+set=http://ilk.uvt.nl/folia/sets/frog-mblem-nl
+timblOpts=-a1 -w2 +vS
+treeFile=pretrained_models/herodotus/froggen.tree
+
+[[tagger]]
+set=http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn
+settings=pretrained_models/herodotus/froggen.settings

@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-#
-#
-# GLEM (was lemmatiser_clam VERSION "1.2.3")
-# 1.0.0 Taken from lemmatiser_clam.py
-#
+
 import re
 import getopt, sys, os
 from collections import Counter
@@ -20,82 +16,8 @@ except:
     print( "WARNING: No Frog", file=sys.stderr )
 
 VERSION = "1.0.0"
-
-'''
-GLEM Lemmatiser -- Work in Progress
-Version with Frog/Python interface, for CLI/Clam
-------------------------------------------------
-
-USAGE:
-  glem.py -f <TEST_FILE> -s OUT
-  - Loads lexicon file(s) automatically; greek_Haudag.pcases.lemma.lex.
-  - greek_Haudag entries take priority over proiel_v3_perseus_merged.txt
-    and extra-wlt.txt files.
-  - Uses Frog for POS tagging and unknown words (disable with -F)
-  - Extra word-lemma-tags can be added to extra-wlp.txt (for example
-    punctuation).
-  - Produces ONE output files (and lots of output to the screen):
-    TEST_FILE.OUT.stats.txt: word, lemma, tag, full lemma, info
-                   followed by statistics
-    TEST_FILE.OUT.wlt.txt: word lemma tag
-                   output from the lemmatiser
-  -Removes "#1", "#2" &c from lemmas in the test data.
-
-  glem.py -w τῶν
-  - Looks up word in lexicon, prints associated lemmas.
-
-  glem.py -l ὕπνος
-  - Looks up lemma in lexicon.
-
-SCREEN OUTPUT (when using "-v"):
-  lemmatise( ταῦτα οὗτος P--p---nn- )                 :input from test file
-  WORD IS IN LEXICON ταῦτα, 2                         :it has 2 entries in lexicon
-  [/ταῦτα/οὗτος/Pd-p---na--i/682/proiel/, /ταῦτα/οὗτος/Pd-p---nn--i/136/proiel/]
-  LEMMA ταῦτα, οὗτος, Pd-p---na--i,   682             :first lexicon entry
-  LEMMA ταῦτα, οὗτος, Pd-p---nn--i,   136             :second lexicon entry
-  lemma = ταῦτα, οὗτος, Pd-p---na--i,   682           :chosen lemmatisation
-  multi lemmas, different pos tag, highest frequency  :lemmatiser justification
-  correct                                             :score using test file
-
-FILE OUTPUT:
-  τὸν     ὁ       S--s---ma-      /τὸν/ὁ/S--s---ma-/2374/proiel/  CORRECT multi lemmas, same pos tag, highest frequency
-  χῶρον   χῶρος   N--s---ma-      /χῶρον/Χῶρος/N--s---ma-/0/nofreq/       WRONG   multi lemmas, same pos tag, other frequency
-
-TEST FILE:
-  hdt_Books_forFrog.col
-  
-  Ἡροδότου	Ἡρόδοτος	N--s---mg-
-  Ἁλικαρνησσέος	Ἁλικαρνασσεύς	N--s---mg-
-
-DATA STRUCTURES:
-  Lexicon is contained in dictionary ghd_words[].
-
-  ghd_words["word"] contains a Word object.
-
-  Word object contains lemmas{}, indexed by POS-tag.
-
-  Example entry:
-  τῶν, 14
-    τῶν, ὁ, S--p---mg-,  1163
-    τῶν, ὁ, S--p---qg-,   660
-    τῶν, ὁ, S--p---ng-,   211
-
-  The lemmatiser looks up a word in the text in ghd_words, and tries 
-  to determine the correct lemma based on frequency info and/or POS-tag.
-
-ALGORITME:
-
-Roep Frog aan met het woord om de POS te bepalen
-Zoek woord op in lexicon lijst
-als maar 1 lemma: neem dat als antwoord
-als meerdere lemmas:
-  zoek naar een lemma met dezelfde POS-tag als in de text
-  als gevonden: neem dat als antwoord
-  niet gevonden, neem het lemma met de hoogste count als antwoord
-als niet in lijst: roep Frog aan
-'''
-
 debug = False
+
 def DBG(*strs):
     if debug:
         sys.stderr.write("DBG:"+"".join(str(strs))+"\n")
@@ -125,9 +47,9 @@ class Lemma:
     def __str__(self):
         return self.word+", "+self.lemma+", "+self.tag+", "+"{0:5n}".format(self.freq)+" "+self.src
 
-greekHDfile = "greek_Haudag.pcases.lemma.lex.rewrite_new"
+greekHDfile = "greek_Haudag.pcases.lemma.lex"
 ghd_words   = {}
-nofreqfile  = "proiel_v3_perseus_merged.txt"
+nofreqfile  = "list_nofreq.proiel_v3_perseus_merged.txt"
 filenames   = [] #list of globbed files
 filename    = None # test file
 extrafile   = "extra-wlt.txt"
@@ -136,7 +58,7 @@ lookup_w    = None #specific word to look up
 lookup_l    = None #specific lemma to look up
 verbose     = False
 wltmode     = False #if true, assume test file is columns; only first token is used
-frog_cfg    = "frog.ancientgreek.template"
+frog_cfg    = "frog.cfg.template"
 remove_root = True # default is to remove ROOT from brat files, -R to disable
 suffix      = ".lastrun"
 stats       = False
@@ -144,13 +66,17 @@ stats       = False
 callstr = " ".join(sys.argv)
 
 try:
-    opts, args = getopt.getopt(sys.argv[1:], "c:f:l:L:s:vw:DE:FM:RWS", [])
+    opts, args = getopt.getopt(sys.argv[1:], "c:f:l:L:m:s:vw:DE:FM:RWS", [])
 except getopt.GetoptError as err:
     print(str(err))
     sys.exit(1)
 for o, a in opts:
     if o in ("-f"):
         filenames = sorted(glob.glob(a))
+    elif o in ("-m"):
+        model_folder = 'pretrained_models/'+a+'/'
+        frog_cfg = model_folder+frog_cfg
+
     elif o in ("-c"): #alternative frog config
          frog_cfg = a
     elif o in ("-l"): #lookup a specific lemma, print to screen
