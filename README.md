@@ -8,7 +8,9 @@ The paper 'A memory-based lemmatizer for Ancient Greek' reports on how it works,
 Dependencies
 ============
 
-Just **Python 3** for the word list based lemmatizer. For machine learning based lemmatization that also takes into account the context, you also need **[Frog](https://languagemachines.github.io/frog/)**. By far the easiest way to install Frog is to use [Lamachine](https://proycon.github.io/LaMachine/).
+Just **Python 3** for the simple word list based lemmatizer.
+
+To add machine learning based lemmatization that also takes into account the context, you also need **[Frog](https://languagemachines.github.io/frog/)**. By far the easiest way to install Frog is to use [Lamachine](https://proycon.github.io/LaMachine/).
 
 Example usage
 =============
@@ -17,4 +19,4 @@ Glem comes with a pretrained model, based on lemmas chosen by humans, for Herodo
 
 ```python glem.py -f input.txt -m herodotus```
 
-The files for this models can be found in ```pretrained_models/herodotus``` . 
+The files for this model can be found in ```pretrained_models/herodotus``` .
