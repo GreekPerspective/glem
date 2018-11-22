@@ -47,9 +47,9 @@ class Lemma:
     def __str__(self):
         return self.word+", "+self.lemma+", "+self.tag+", "+"{0:5n}".format(self.freq)+" "+self.src
 
-greekHDfile = "greek_Haudag.pcases.lemma.lex"
+greekHDfile = "list_proiel_word_lemma_POS_freq"
 ghd_words   = {}
-nofreqfile  = "list_nofreq.proiel_v3_perseus_merged.txt"
+nofreqfile  = "list_proiel_perseus_merged_word_lemma_POS_nofreq"
 filenames   = [] #list of globbed files
 filename    = None # test file
 extrafile   = "extra-wlt.txt"
