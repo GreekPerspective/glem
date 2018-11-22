@@ -13,7 +13,7 @@ Just **Python 3** for the word list based lemmatizer. For machine learning based
 Example usage
 =============
 
-Glem comes with a pretrained model, based on lemmas chosen by humans, for Herodotus. If you are inside the Lamachine environment (something like ```lamachine/bin/activate```), you can use it (with or without Frog) as follows:
+Glem comes with a pretrained model, based on lemmas chosen by humans (in the UiO PROIEL project, PI: Dag Haug), for Herodotus. If you are inside the Lamachine environment (something like ```lamachine/bin/activate```), you can use it (with or without Frog) as follows:
 
 ```python glem.py -f input.txt -m herodotus```
 
