@@ -10,7 +10,7 @@ from unicodedata import normalize
 
 have_frog = False
 try:
-    import frog
+    from frog import Frog, FrogOptions
     have_frog = True
 except:
     print( "WARNING: No Frog", file=sys.stderr )
@@ -138,6 +138,8 @@ def compare_postags(tf_tag, l_tag):
 
 
 def main():
+    global have_frog
+
     greekHDfile = os.path.join(os.path.dirname(os.path.abspath(__file__)), "list_proiel_word_lemma_POS_freq")
     ghd_words   = {}
     nofreqfile  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "list_proiel_perseus_merged_word_lemma_POS_nofreq")
@@ -149,7 +151,7 @@ def main():
     lookup_l    = None #specific lemma to look up
     verbose     = False
     wltmode     = False #if true, assume test file is columns; only first token is used
-    frog_cfg    = "frog.cfg.template" #full path will be prepended later
+    frog_cfg    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pretrained_models/herodotus/frog.cfg.template")
     remove_root = True # default is to remove ROOT from brat files, -R to disable
     suffix      = ".lastrun"
     stats       = False
@@ -157,17 +159,13 @@ def main():
     callstr = " ".join(sys.argv)
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "c:f:l:L:m:s:vw:DE:FM:RWS", [])
+        opts, args = getopt.getopt(sys.argv[1:], "c:f:l:L:s:vw:DE:FM:RWS", [])
     except getopt.GetoptError as err:
         print(str(err))
         sys.exit(1)
     for o, a in opts:
         if o in ("-f"):
             filenames = sorted(glob.glob(a))
-        elif o in ("-m"):
-            model_folder = os.path.dirname(os.path.abspath(__file__)) + '/pretrained_models/'+a+'/'
-            frog_cfg = model_folder+frog_cfg
-
         elif o in ("-c"): #alternative frog config
              frog_cfg = a
         elif o in ("-l"): #lookup a specific lemma, print to screen
@@ -210,7 +208,7 @@ def main():
             print( "ERROR: FILE NOT FOUND:", f, file=sys.stderr )
             files_found = False
     if not files_found:
-        print( "ABORT: Necessary files nt found", file=sys.stderr )
+        print( "ABORT: Necessary files not found", file=sys.stderr )
         print( "ABORT: Necessary files nt found", file=lgf, flush=True )
         lgf.close()
         sys.exit(1)
@@ -218,7 +216,7 @@ def main():
     # Initialise Frog.
     if have_frog:
         print( "INITIALISE FROG", file=sys.stderr )
-        frog = frog.Frog(frog.FrogOptions(parser=True,tok=False,morph=False,mwu=False,chunking=False,ner=False), frog_cfg )
+        frog = Frog(FrogOptions(parser=True,tok=False,morph=False,mwu=False,chunking=False,ner=False), frog_cfg )
 
     # Statistics on lexicon files.
     line_count  = 0
