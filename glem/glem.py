@@ -138,18 +138,18 @@ def compare_postags(tf_tag, l_tag):
 
 
 def main():
-    greekHDfile = "list_proiel_word_lemma_POS_freq"
+    greekHDfile = os.path.join(os.path.dirname(os.path.abspath(__file__)), "list_proiel_word_lemma_POS_freq")
     ghd_words   = {}
-    nofreqfile  = "list_proiel_perseus_merged_word_lemma_POS_nofreq"
+    nofreqfile  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "list_proiel_perseus_merged_word_lemma_POS_nofreq")
     filenames   = [] #list of globbed files
     filename    = None # test file
-    extrafile   = "extra-wlt.txt"
+    extrafile   = os.path.join(os.path.dirname(os.path.abspath(__file__)), "extra-wlt.txt")
     frog_words  = {}
     lookup_w    = None #specific word to look up
     lookup_l    = None #specific lemma to look up
     verbose     = False
     wltmode     = False #if true, assume test file is columns; only first token is used
-    frog_cfg    = "frog.cfg.template"
+    frog_cfg    = "frog.cfg.template" #full path will be prepended later
     remove_root = True # default is to remove ROOT from brat files, -R to disable
     suffix      = ".lastrun"
     stats       = False
@@ -165,7 +165,7 @@ def main():
         if o in ("-f"):
             filenames = sorted(glob.glob(a))
         elif o in ("-m"):
-            model_folder = 'pretrained_models/'+a+'/'
+            model_folder = os.path.dirname(os.path.abspath(__file__)) + '/pretrained_models/'+a+'/'
             frog_cfg = model_folder+frog_cfg
 
         elif o in ("-c"): #alternative frog config

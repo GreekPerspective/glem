@@ -31,7 +31,7 @@ setup(
     ],
     zip_safe=False,
     include_package_data=True,
-    package_data = { 'glem': ['extra-wlt.txt','list_proiel_perseus_merged_word_lemma_POS_nofreq','list_proiel_word_lemma_POS_freq'] },
+    package_data = { 'glem': ['extra-wlt.txt','list_proiel_perseus_merged_word_lemma_POS_nofreq','list_proiel_word_lemma_POS_freq','pretrained_models/*'] },
     install_requires=[],
     entry_points = { 'console_scripts': [ 'glem = glem.glem:main' ]}
 )
