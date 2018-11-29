@@ -110,7 +110,7 @@ def lemmatise(word, tag, ghd_words, verbose):
         print( "UNKNOWN WORD", word )
     return (None, "UNKNOWN")
 
-def query_frog_sentence(words, verbose):
+def query_frog_sentence(frog,words, verbose):
     if have_frog:
         try:
             frog_out  = frog.process(words)
@@ -501,7 +501,7 @@ def main():
                             words.pop(0)
                         words = [ normalize('NFC', w) for w in words ]
                         if have_frog:
-                            frog_out = query_frog_sentence(" ".join(words) , verbose)
+                            frog_out = query_frog_sentence(frog," ".join(words) , verbose)
                         for word in words:
                             if verbose:
                                 print( "\n", word, lcount, wcount )

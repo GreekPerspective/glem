@@ -26,6 +26,6 @@ Example usage
 
 Glem comes with a pretrained model, based on lemmas chosen by humans (in the UiO PROIEL project, PI: Dag Haug), for Herodotus. If you are inside the Lamachine environment (something like ```lamachine/bin/activate```), you can use it (with or without Frog) as follows:
 
-```glem -f input.txt -m herodotus```
+```glem -f input.txt```
 
 The files for this model can be found in ```glem/pretrained_models/herodotus``` .
