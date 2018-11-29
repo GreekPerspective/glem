@@ -19,7 +19,7 @@ setup(
     license = "GPL",
     keywords = "nlp computational_linguistics entities linguistics ancient_greek, lemmatizer lemmatization frog",
     url = "https://github.com/GreekPerspective/glem",
-    packages=[],
+    packages=["glem"],
     long_description=read('README.md'),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -32,5 +32,5 @@ setup(
     zip_safe=False,
     include_package_data=False,
     install_requires=[],
-    entry_points = {}
+    entry_points = { 'console_scripts': [ 'glem = glem.glem:main' ]}
 )
