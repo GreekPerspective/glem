@@ -30,7 +30,8 @@ setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     ],
     zip_safe=False,
-    include_package_data=False,
+    include_package_data=True,
+    package_data = { 'glem': ['extra-wlt.txt','list_proiel_perseus_merged_word_lemma_POS_nofreq','list_proiel_word_lemma_POS_freq'] },
     install_requires=[],
     entry_points = { 'console_scripts': [ 'glem = glem.glem:main' ]}
 )
