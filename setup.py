@@ -12,14 +12,14 @@ def read(fname):
 
 setup(
     name = "Glem",
-    version = "1.0",
+    version = "1.1.0", #also update in glem.py
     author = "Corien Bary, Iris Hendrickx, Peter Berck, Wessel Stoop",
     author_email = "c.bary@let.ru.nl",
     description = ("GLEM is a lemmatizer for Ancient Greek."),
     license = "GPL",
     keywords = "nlp computational_linguistics entities linguistics ancient_greek, lemmatizer lemmatization frog",
     url = "https://github.com/GreekPerspective/glem",
-    packages=[],
+    packages=["glem"],
     long_description=read('README.md'),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -30,7 +30,8 @@ setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     ],
     zip_safe=False,
-    include_package_data=False,
+    include_package_data=True,
+    package_data = { 'glem': ['extra-wlt.txt','list_proiel_perseus_merged_word_lemma_POS_nofreq','list_proiel_word_lemma_POS_freq','pretrained_models/herodotus/*'] },
     install_requires=[],
-    entry_points = {}
+    entry_points = { 'console_scripts': [ 'glem = glem.glem:main' ]}
 )

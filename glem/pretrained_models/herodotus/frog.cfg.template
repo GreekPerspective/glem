@@ -1,12 +1,13 @@
 [[global]]
-configDir=
 
 [[mblem]]
 keep_case=true
 set=http://ilk.uvt.nl/folia/sets/frog-mblem-nl
 timblOpts=-a1 -w2 +vS
-treeFile=pretrained_models/herodotus/froggen.tree
+treeFile=froggen.tree
 
 [[tagger]]
 set=http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn
-settings=pretrained_models/herodotus/froggen.settings
+settings=froggen.settings
+subsets_file=subsets
+constraints_file=constraints
