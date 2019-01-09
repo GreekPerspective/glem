@@ -128,11 +128,12 @@ for inputfile in clamdata.input:
 # out of the quoted environment! Can be used without the quote too, but will be
 # do much stricter checks then to ensure security.
 
+from sys import path
 from os import system
 from shutil import move
 
-ROOT = '/home/wstoop/glem/glem/glem.py'
-system('python ' + ROOT + ' -f ' + shellsafe(inputfilepath,'"') );
+ROOT = path[0]+'/../../glem/'
+system('python ' + ROOT + 'glem.py -f ' + shellsafe(inputfilepath,'"') );
 
 move(inputfilepath+'.lastrun.wlt.txt',outputdir+'out')
 
