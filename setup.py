@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
     name = "Glem",
-    version = "1.1.0", #also update in glem.py
+    version = "1.1.1", #also update in glem.py
     author = "Corien Bary, Iris Hendrickx, Peter Berck, Wessel Stoop",
     author_email = "c.bary@let.ru.nl",
     description = ("GLEM is a lemmatizer for Ancient Greek."),
