@@ -31,6 +31,9 @@ from __future__ import print_function, unicode_literals, division, absolute_impo
 
 #import some general python modules:
 import sys
+import os.path
+from os import system
+from shutil import move
 
 #import CLAM-specific modules. The CLAM API makes a lot of stuff easily accessible.
 import clam.common.data
@@ -99,6 +102,9 @@ for inputfile in clamdata.input:
    inputtemplate = inputfile.metadata.inputtemplate
    inputfilepath = str(inputfile)
    encoding = inputfile.metadata['encoding'] #Example showing how to obtain metadata parameters
+   system('glem -f ' + shellsafe(inputfilepath,'"') )
+   basename = os.path.basename(inputfilepath)[:-4]
+   move(inputfilepath+'.lastrun.wlt.txt',outputdir+basename + '.out.txt')
 
 #(Note: Both these iteration examples will fail if you change the current working directory, so make sure to set it back to the initial path if you do need to change it!!)
 
@@ -128,13 +134,7 @@ for inputfile in clamdata.input:
 # out of the quoted environment! Can be used without the quote too, but will be
 # do much stricter checks then to ensure security.
 
-from sys import path
-from os import system
-from shutil import move
 
-system('glem -f ' + shellsafe(inputfilepath,'"') )
-
-move(inputfilepath+'.lastrun.wlt.txt',outputdir+'out')
 
 # Rather than execute a single system, call you may want to invoke it multiple
 # times from within one of the iterations.

@@ -178,14 +178,15 @@ PROFILES = [
             #MSWordConverter(id='docconv',label='Convert from MS Word Document'),
             extension='.txt',
             #filename='filename.txt',
-            unique=True #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
+            unique=False #set unique=True if the user may only upload a file for this input template once. Set multi=True if you the user may upload multiple of such files
         ),
         #------------------------------------------------------------------------------------------------------------------------
         OutputTemplate('lemmatized_text',PlainTextFormat,'Lemmatized text',
-            SetMetaField('encoding','ascii'), #note that encoding is required if you work with PlainTextFormat
-            extension='.stats', #set an extension or set a filename:
+            SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
+            removeextension='.txt', #remove this extension prior to adding the one below:
+            extension='.out.txt', #set an extension or set a filename:
             #filename='filename.stats',
-            unique=True
+            unique=False
         ),
     )
 ]
