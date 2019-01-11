@@ -132,8 +132,7 @@ from sys import path
 from os import system
 from shutil import move
 
-ROOT = path[0]+'/../../glem/'
-system('python ' + ROOT + 'glem.py -f ' + shellsafe(inputfilepath,'"') );
+system('glem -f ' + shellsafe(inputfilepath,'"') )
 
 move(inputfilepath+'.lastrun.wlt.txt',outputdir+'out')
 
