@@ -15,7 +15,7 @@ try:
 except:
     print( "WARNING: No Frog", file=sys.stderr )
 
-VERSION = "1.1.0" #also update in setup.py!
+VERSION = "1.1.1" #also update in setup.py!
 debug = False
 
 def DBG(*strs):
