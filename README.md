@@ -5,7 +5,7 @@ It has been created in the project 'Unraveling the Language of Perspective' (htt
 
 The paper 'A memory-based lemmatizer for Ancient Greek' reports on how it works, what material it uses, and what the accuracy is. It can be found in the repository and at http://dl.acm.org/citation.cfm?id=3078100.
 
-A webservice where you can upload a text that you want to have lemmatized can be found at https://webservices-lst.science.ru.nl/portal/
+A webservice where you can upload texts that you want to have lemmatized can be found at https://webservices-lst.science.ru.nl/portal/
 
 
 Dependencies
