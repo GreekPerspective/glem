@@ -49,14 +49,24 @@ SYSTEM_DESCRIPTION = "GLEM is a lemmatizer for Ancient Greek."
 
 #A version label of the underlying tool and/or this CLAM wrapper
 #(If you can derive this dynamically then that is strongly recommended!)
-#SYSTEM_VERSION = 0.1
+SYSTEM_VERSION = "1.2.0"
 
 #The author(s) of the underlying tool and/or this CLAM wrapper
 #(If you can derive this dynamically then that is strongly recommended!)
-#SYSTEM_AUTHOR = ""
+SYSTEM_AUTHOR = "Corien Bary, Peter Berck, Iris Hendrickx"
 
-#How to reach the authors?
-#SYSTEM_EMAIL = ""
+SYSTEM_AFFILIATION = "Faculty of Philosophy, Theology and Religious Studies and Centre for Language and Speech Technology, Radboud University Nijmegen"
+
+SYSTEM_URL = "https://github.com/GreekPerspective/glem/"
+
+SYSTEM_EMAIL = "c.bary@ftr.ru.bl"
+
+CUSTOMHTML_INDEX = """
+<p>GLEM has been created in the project <a href="http://ncs.ruhosting.nl/perspective/">Unraveling the Language of Perspective</a>, which is supported by the EU under FP7, ERC Starting Grant 338421-Perspective.</p>
+
+<p>The paper <em>A memory-based lemmatizer for Ancient Greek</em> reports on how it works, what material it uses, and what the accuracy is. It can be read <a href="http://dl.acm.org/citation.cfm?id=3078100">here</a>.
+</p>
+"""
 
 # ======== LOCATION ===========
 

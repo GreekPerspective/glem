@@ -1,0 +1,152 @@
+{
+    "@context": [
+        "https://doi.org/10.5063/schema/codemeta-2.0",
+        "http://schema.org",
+        "https://github.com/CLARIAH/tool-metadata",
+        {
+            "entryPoints": { "@reverse": "schema:actionApplication" },
+            "interfaceType": { "@id": "codemeta:interfaceType" },
+            "inputLanguage": { "@id": "codemeta:inputLanguage" },
+            "inputFormat": { "@id": "codemeta:inputFormat" }
+        }
+    ],
+    "@type": "SoftwareSourceCode",
+    "identifier": "glem",
+    "name": "Glem",
+    "version": "1.2.0",
+    "description": "GLEM is a lemmatizer for Ancient Greek.",
+    "license": "https://spdx.org/licenses/GPL-3.0",
+	"url": "https://github.com/GreekPerspective/glem",
+    "producer": [
+        {
+            "@id": "https://www.ru.nl/ptrs",
+            "@type": "Organization",
+            "name": "Theology and Religious Studies",
+            "url": "https://www.ru.nl/ptrs",
+            "parentOrganization": {
+                "@id": "https://www.ru.nl/ftr",
+                "@type": "Organization",
+                "name": "Faculty of Philosophy",
+                "url": "https://www.ru.nl/ftr",
+                "parentOrganization": {
+                    "@id": "https://www.ru.nl",
+                    "name": "Radboud University",
+                    "@type": "Organization",
+                    "url": "https://www.ru.nl",
+                    "location": {
+                        "@type": "Place",
+                        "name": "Nijmegen"
+                    }
+                }
+            }
+        },
+        {
+            "@id": "https://www.ru.nl/clst",
+            "@type": "Organization",
+            "name": "Centre for Language and Speech Technology",
+            "url": "https://www.ru.nl/clst",
+            "parentOrganization": {
+                "@id": "https://www.ru.nl/cls",
+                "@type": "Organization",
+                "name": "Centre for Language Studies",
+                "url": "https://www.ru.nl/cls",
+                "parentOrganization": {
+                    "@id": "https://www.ru.nl",
+                    "name": "Radboud University",
+                    "@type": "Organization",
+                    "url": "https://www.ru.nl",
+                    "location": {
+                        "@type": "Place",
+                        "name": "Nijmegen"
+                    }
+                }
+            }
+        }
+    ],
+    "author": [
+		{
+			"@type": "Person",
+			"givenName": "Corien",
+			"familyName": "Bary",
+			"email": "ko.vandersloot@let.ru.nl",
+			"affiliation": { "@id": "https://www.ru.nl/ptrs" }
+		},
+		{
+			"@type": "Person",
+			"givenName": "Peter",
+			"familyName": "Berck",
+			"affiliation": { "@id": "https://www.ru.nl/clst" }
+		},
+		{
+			"@type": "Person",
+			"givenName": "Iris",
+			"familyName": "Hendrickx",
+			"affiliation": { "@id": "https://www.ru.nl/clst" }
+		}
+	],
+	"sourceOrganization": { "@id": "https://www.ru.nl/clst" },
+	"programmingLanguage": {
+		"@type": "ComputerLanguage",
+		"identifier": "python",
+		"name": "Python"
+	},
+	"operatingSystem": "POSIX",
+	"codeRepository": "https://github.com/GreekPerspective/glem",
+    "softwareRequirements": [
+        {
+			"@type": "SoftwareApplication",
+			"identifier": "frog",
+			"name": "frog"
+		}
+	],
+	"funder": [
+		{
+			"@type": "Organization",
+			"name": "Unraveling the Language of Perspective (FP7, ERC Starting Grant 338421-Perspective)"
+		}
+	],
+	"readme": "https://github.com/GreekPerspective/glem/blob/master/README.md",
+	"issueTracker": "https://github.com/GreekPerspective/glem/issues",
+	"contIntegration": "https://travis-ci.org/GreekPerspective/glem",
+	"releaseNotes": "https://github.com/GreekPerspective/glem/releases",
+	"developmentStatus": "active",
+	"keywords":  [ "nlp", "natural language processing", "greek","ancient greek", "lemmatisation", "lemma"],
+    "referencePublication": [
+		{
+			"@type": "ScholarlyArticle",
+			"name": "A Memory-Based Lemmatizer for Ancient Greek",
+			"author": [ "Corien Bary", "Peter Berck", "Iris Hendrickx" ],
+			"pageStart": "91",
+			"pageEnd": "95",
+			"isPartOf": {
+				"@type": "PublicationIssue",
+				"datePublished": "2017",
+				"name": "DATeCH 2017, Proceedings of the 2nd International Conference on Digital Access to Textual Cultural Heritage",
+				"location": "Göttingen, Germany"
+			},
+			"url": "https://dl.acm.org/citation.cfm?id=3078100"
+		}
+	],
+	"dateCreated": "2017-04-09",
+    "entryPoints": [
+        {
+            "@type": "EntryPoint",
+            "name": "glem",
+            "urlTemplate": "file:///glem",
+            "description": "Command-line interface to GLEM",
+            "interfaceType": "CLI"
+        }
+    ],
+    "inputFormat": [ "text/plain" ],
+    "inputLanguage": {
+        "@type": "Language",
+        "name": "Ancient Greek",
+        "alternateName": "grc",
+        "sameAs": "http://www.lexvo.org/data/iso639-3/grc"
+    },
+    "outputFormat": [ "text/plain" ],
+    "researchDomain": "Linguistics",
+    "linguisticsSubject": [ "general linguistics", "syntax" ],
+    "toolTask": [ "lemmatisation" ],
+    "researchPhase": "Enriching Data"
+}
