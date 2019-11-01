@@ -53,7 +53,7 @@ SYSTEM_VERSION = "1.2.0"
 
 #The author(s) of the underlying tool and/or this CLAM wrapper
 #(If you can derive this dynamically then that is strongly recommended!)
-SYSTEM_AUTHOR = "Corien Bary, Peter Berck, Iris Hendrickx"
+SYSTEM_AUTHOR = "Corien Bary, Peter Berck, Iris Hendrickx, Wessel Stoop"
 
 SYSTEM_AFFILIATION = "Faculty of Philosophy, Theology and Religious Studies and Centre for Language and Speech Technology, Radboud University Nijmegen"
 
