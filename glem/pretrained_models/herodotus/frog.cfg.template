@@ -2,12 +2,15 @@
 
 [[mblem]]
 keep_case=true
-set=http://ilk.uvt.nl/folia/sets/frog-mblem-nl
+set=https://raw.githubusercontent.com/GreekPerspective/glem/master/setdefinitions/glem-lemma
 timblOpts=-a1 -w2 +vS
 treeFile=froggen.tree
 
 [[tagger]]
-set=http://ilk.uvt.nl/folia/sets/frog-mbpos-cgn
+set=https://raw.githubusercontent.com/GreekPerspective/glem/master/setdefinitions/glem-pos
 settings=froggen.settings
 subsets_file=subsets
 constraints_file=constraints
+
+[[tokenizer]]
+rulesFile=tokconfig-generic
