@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
     name = "Glem",
-    version = "1.2.0", #also update in glem.py and webglem.py
+    version = "1.3.0", #also update in glem.py and webglem.py
     author = "Corien Bary, Iris Hendrickx, Peter Berck, Wessel Stoop",
     author_email = "c.bary@let.ru.nl",
     description = ("GLEM is a lemmatizer for Ancient Greek."),
@@ -34,6 +34,6 @@ setup(
     zip_safe=False,
     include_package_data=True,
     package_data = { 'glem': ['extra-wlt.txt','list_proiel_perseus_merged_word_lemma_POS_nofreq','list_proiel_word_lemma_POS_freq','pretrained_models/herodotus/*'], 'webglem':['*.wsgi','*.yml'] },
-    install_requires=['CLAM >= 2.3'],
+    install_requires=['CLAM >= 3.0'],
     entry_points = { 'console_scripts': [ 'glem = glem.glem:main' ]}
 )

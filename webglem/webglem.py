@@ -16,9 +16,6 @@
 
 #Consult the CLAM manual for extensive documentation
 
-#If we run on Python 2.7, behave as much as Python 3 as possible
-from __future__ import print_function, unicode_literals, division, absolute_import
-
 from clam.common.parameters import *
 from clam.common.formats import *
 from clam.common.converters import *
@@ -29,7 +26,7 @@ import clam
 import sys
 import os
 
-REQUIRE_VERSION = 2.3
+REQUIRE_VERSION = 3.0
 
 CLAMDIR = clam.__path__[0] #directory where CLAM is installed, detected automatically
 WEBSERVICEDIR = os.path.dirname(os.path.abspath(__file__)) #directory where this webservice is installed, detected automatically
@@ -49,7 +46,7 @@ SYSTEM_DESCRIPTION = "GLEM is a lemmatizer for Ancient Greek."
 
 #A version label of the underlying tool and/or this CLAM wrapper
 #(If you can derive this dynamically then that is strongly recommended!)
-SYSTEM_VERSION = "1.2.0"
+SYSTEM_VERSION = "1.3.0"
 
 #The author(s) of the underlying tool and/or this CLAM wrapper
 #(If you can derive this dynamically then that is strongly recommended!)
