@@ -82,6 +82,12 @@
 			"givenName": "Iris",
 			"familyName": "Hendrickx",
 			"affiliation": { "@id": "https://www.ru.nl/clst" }
+		},
+		{
+			"@type": "Person",
+			"givenName": "Wessel",
+			"familyName": "Stoop",
+			"affiliation": { "@id": "https://www.ru.nl/clst" }
 		}
 	],
 	"sourceOrganization": { "@id": "https://www.ru.nl/clst" },
