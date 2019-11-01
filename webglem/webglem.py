@@ -59,7 +59,7 @@ SYSTEM_AFFILIATION = "Faculty of Philosophy, Theology and Religious Studies and 
 
 SYSTEM_URL = "https://github.com/GreekPerspective/glem/"
 
-SYSTEM_EMAIL = "c.bary@ftr.ru.bl"
+SYSTEM_EMAIL = "c.bary@ftr.ru.nl"
 
 CUSTOMHTML_INDEX = """
 <p>GLEM has been created in the project <a href="http://ncs.ruhosting.nl/perspective/">Unraveling the Language of Perspective</a>, which is supported by the EU under FP7, ERC Starting Grant 338421-Perspective.</p>
