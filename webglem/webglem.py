@@ -189,6 +189,7 @@ PROFILES = [
         ),
         #------------------------------------------------------------------------------------------------------------------------
         OutputTemplate('lemmatized_text',PlainTextFormat,'Lemmatized text',
+            SimpleTableViewer(delimiter="\t"),
             SetMetaField('encoding','utf-8'), #note that encoding is required if you work with PlainTextFormat
             removeextension='.txt', #remove this extension prior to adding the one below:
             extension='.out.txt', #set an extension or set a filename:
