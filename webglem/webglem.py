@@ -46,7 +46,7 @@ SYSTEM_DESCRIPTION = "GLEM is a lemmatizer for Ancient Greek."
 
 #A version label of the underlying tool and/or this CLAM wrapper
 #(If you can derive this dynamically then that is strongly recommended!)
-SYSTEM_VERSION = "1.3.0"
+SYSTEM_VERSION = "1.3.1"
 
 #The author(s) of the underlying tool and/or this CLAM wrapper
 #(If you can derive this dynamically then that is strongly recommended!)

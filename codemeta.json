@@ -2,20 +2,15 @@
     "@context": [
         "https://doi.org/10.5063/schema/codemeta-2.0",
         "http://schema.org",
-        "https://github.com/CLARIAH/tool-metadata",
-        {
-            "entryPoints": { "@reverse": "schema:actionApplication" },
-            "interfaceType": { "@id": "codemeta:interfaceType" },
-            "inputLanguage": { "@id": "codemeta:inputLanguage" },
-            "inputFormat": { "@id": "codemeta:inputFormat" }
-        }
+        "https://w3id.org/software-types",
+        "https://w3id.org/software-iodata"
     ],
     "@type": "SoftwareSourceCode",
     "identifier": "glem",
     "name": "Glem",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "description": "GLEM is a lemmatizer for Ancient Greek.",
-    "license": "https://spdx.org/licenses/GPL-3.0",
+    "license": "https://spdx.org/licenses/GPL-3.0-only",
 	"url": "https://github.com/GreekPerspective/glem",
     "producer": [
         {
@@ -105,17 +100,21 @@
 			"name": "frog"
 		}
 	],
-	"funder": [
-		{
-			"@type": "Organization",
-			"name": "Unraveling the Language of Perspective (FP7, ERC Starting Grant 338421-Perspective)"
-		}
-	],
+    "funding": {
+        "@type": "Grant",
+        "name": "Unraveling the Language of Perspective (FP7, ERC Starting Grant 338421-Perspective)",
+        "url": "https://cordis.europa.eu/project/id/338421/reporting",
+        "funder": {
+            "@type": "Organization",
+            "name": "European Research council", 
+            "url": "https://erc.europa.eu/"
+        }
+    },
 	"readme": "https://github.com/GreekPerspective/glem/blob/master/README.md",
 	"issueTracker": "https://github.com/GreekPerspective/glem/issues",
 	"contIntegration": "https://travis-ci.org/GreekPerspective/glem",
 	"releaseNotes": "https://github.com/GreekPerspective/glem/releases",
-	"developmentStatus": "active",
+	"developmentStatus": [ "https://www.repostatus.org/#inactive", "https://w3id.org/research-technology-readiness-level#Level8Complete" ],
 	"keywords":  [ "nlp", "natural language processing", "greek","ancient greek", "lemmatisation", "lemma"],
     "referencePublication": [
 		{
@@ -134,25 +133,26 @@
 		}
 	],
 	"dateCreated": "2017-04-09",
-    "entryPoints": [
-        {
-            "@type": "EntryPoint",
-            "name": "glem",
-            "urlTemplate": "file:///glem",
-            "description": "Command-line interface to GLEM",
-            "interfaceType": "CLI"
-        }
-    ],
-    "inputFormat": [ "text/plain" ],
-    "inputLanguage": {
-        "@type": "Language",
-        "name": "Ancient Greek",
-        "alternateName": "grc",
-        "sameAs": "http://www.lexvo.org/data/iso639-3/grc"
-    },
-    "outputFormat": [ "text/plain" ],
-    "researchDomain": "Linguistics",
-    "linguisticsSubject": [ "general linguistics", "syntax" ],
-    "toolTask": [ "lemmatisation" ],
-    "researchPhase": "Enriching Data"
+    "dateModified": "2022-11-03T14:17:06Z+0100",
+    "targetProduct": [{
+        "@type": "CommandLineApplication",
+        "name": "glem",
+        "executableName": "glem",
+        "description": "Command-line interface to GLEM",
+        "consumesData": [ 
+            {
+                "@type": "TextDigitalDocument",
+                "encodingFormat": "text/plain",
+                "inLanguage": { "@id": "https://iso639-3.sil.org/code/grc" }
+            }
+        ],
+        "producesData": [ 
+            {
+                "@type": "TextDigitalDocument",
+                "encodingFormat": "text/plain",
+                "inLanguage": { "@id": "https://iso639-3.sil.org/code/grc" }
+            }
+        ]
+    }],
+    "applicationCategory": [ "https://vocabs.dariah.eu/tadirah/annotating", "https://w3id.org/nwo-research-fields#ComputationalLinguisticsandPhilology", "https://w3id.org/nwo-research-fields#GreekAndLatinPhilologyAndLiterature" ],
 }
