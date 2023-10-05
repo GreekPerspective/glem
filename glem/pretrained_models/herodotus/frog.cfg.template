@@ -1,5 +1,3 @@
-[[global]]
-
 [[mblem]]
 keep_case=true
 set=https://raw.githubusercontent.com/GreekPerspective/glem/master/setdefinitions/glem-lemma
@@ -7,10 +5,11 @@ timblOpts=-a1 -w2 +vS
 treeFile=froggen.tree
 
 [[tagger]]
+constraints_file=ignore
 set=https://raw.githubusercontent.com/GreekPerspective/glem/master/setdefinitions/glem-pos
-settings=froggen.settings
-subsets_file=subsets
-constraints_file=constraints
+settings=hdt_Books_forFrog.10plaatsig.zu.col.settings
+subsets_file=ignore
+token_trans_file=ignore
 
 [[tokenizer]]
 rulesFile=tokconfig-generic
