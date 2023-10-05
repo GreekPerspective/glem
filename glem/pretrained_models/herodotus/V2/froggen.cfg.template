@@ -12,5 +12,4 @@ subsets_file=ignore
 token_trans_file=ignore
 
 [[tokenizer]]
-configDir=/home/sloot/git/../usr/local/share/ucto/
 rulesFile=tokconfig-generic
