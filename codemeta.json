@@ -154,5 +154,5 @@
             }
         ]
     }],
-    "applicationCategory": [ "https://vocabs.dariah.eu/tadirah/annotating", "https://w3id.org/nwo-research-fields#ComputationalLinguisticsandPhilology", "https://w3id.org/nwo-research-fields#GreekAndLatinPhilologyAndLiterature" ],
+    "applicationCategory": [ "https://vocabs.dariah.eu/tadirah/annotating", "https://w3id.org/nwo-research-fields#ComputationalLinguisticsandPhilology", "https://w3id.org/nwo-research-fields#GreekAndLatinPhilologyAndLiterature" ]
 }
