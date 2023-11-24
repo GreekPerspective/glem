@@ -15,7 +15,7 @@ try:
 except:
     print( "WARNING: No Frog", file=sys.stderr )
 
-VERSION = "1.3.1" #also update in setup.py and webglem.py
+VERSION = "1.3.2" #also update in setup.py and webglem.py
 debug = False
 
 def DBG(*strs):
